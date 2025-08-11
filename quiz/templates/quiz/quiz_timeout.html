@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block title %}Time's Up!{% endblock %}
+
+{% block content %}
+  <h2>Time's Up!</h2>
+  <p>You ran out of time to complete the quiz.</p>
+  
+  <a href="{% url 'quiz_list' %}" class="btn btn-primary">Try Another Quiz</a>
+  <a href="{% url 'profile' %}" class="btn btn-danger">Back to Profile</a>
+{% endblock %}

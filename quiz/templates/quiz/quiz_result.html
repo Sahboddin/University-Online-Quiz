@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}Quiz Result{% endblock %}
+{% block content %}
+  <h2>Result for {{ quiz.title }}</h2>
+  
+  <div class="result-score">
+    Your score: {{ result.score }} out of 5
+  </div>
+  
+  <p>Time taken: {{ result.time_taken|floatformat:0 }} seconds</p>
+  <p>Percentage: {{ result.score|floatformat:0 }}%</p>
+  
+  {% with feedback=result.get_feedback %}
+    <div class="feedback 
+      {% if 'Excellent' in feedback %}feedback-excellent
+      {% elif 'Good job' in feedback %}feedback-good
+      {% elif 'Not bad' in feedback %}feedback-average
+      {% else %}feedback-poor{% endif %}">
+      {{ feedback }}
+    </div>
+  {% endwith %}
+  
+  <a href="{% url 'quiz_list' %}" class="btn btn-primary">Try Another Quiz</a>
+  <a href="{% url 'profile' %}" class="btn btn-danger">Back to Profile</a>
+{% endblock %}

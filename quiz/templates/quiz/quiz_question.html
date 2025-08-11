@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ quiz.title }} - Question {{ question_number }}{% endblock %}
+
+{% block content %}
+  <h2>{{ quiz.title }}</h2>
+  <p>Question {{ question_number }} of {{ total_questions }}</p>
+  <div class="timer">Time left: {{ time_left|floatformat:0 }} seconds</div>
+  
+  <form method="post" action="{% if question_number < total_questions %}{% url 'quiz_question' question_number|add:1 %}{% else %}{% url 'submit_quiz' %}{% endif %}">
+    {% csrf_token %}
+    <div class="question-text">{{ question.text }}</div>
+    <div class="answer-options">
+      {% for option in question.get_options %}
+        <label>
+          <input type="radio" name="question_{{ question.id }}" value="{{ option }}">
+          {{ option }}
+        </label>
+      {% endfor %}
+    </div>
+    
+    {% if question_number < total_questions %}
+      <button type="submit" class="btn btn-primary">Next Question</button>
+    {% else %}
+      <button type="submit" class="btn btn-success">Submit Quiz</button>
+    {% endif %}
+  </form>
+{% endblock %}
