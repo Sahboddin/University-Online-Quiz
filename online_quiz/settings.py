@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure--q==$f&qz_c2)hu=4cu9(*ep7abei=3(*5s(-k)7v!2cwb8^g_'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 
 ALLOWED_HOSTS = ['https://online-quiz-system-kb7i.onrender.com', 'localhost', '127.0.0.1']
