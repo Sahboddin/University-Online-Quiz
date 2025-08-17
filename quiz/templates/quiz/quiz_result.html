@@ -8,17 +8,15 @@
   </div>
   
   <p>Time taken: {{ result.time_taken|floatformat:0 }} seconds</p>
-  <p>Percentage: {{ result.score|floatformat:0 }}%</p>
+  <p>Percentage: {{ percentage|floatformat:0 }}%</p>
   
-  {% with feedback=result.get_feedback %}
-    <div class="feedback 
-      {% if 'Excellent' in feedback %}feedback-excellent
-      {% elif 'Good job' in feedback %}feedback-good
-      {% elif 'Not bad' in feedback %}feedback-average
-      {% else %}feedback-poor{% endif %}">
-      {{ feedback }}
-    </div>
-  {% endwith %}
+  <div class="feedback 
+    {% if 'Excellent' in feedback %}feedback-excellent
+    {% elif 'Good job' in feedback %}feedback-good
+    {% elif 'Not bad' in feedback %}feedback-average
+    {% else %}feedback-poor{% endif %}">
+    {{ feedback }}
+  </div>
   
   <a href="{% url 'quiz_list' %}" class="btn btn-primary">Try Another Quiz</a>
   <a href="{% url 'profile' %}" class="btn btn-danger">Back to Profile</a>
