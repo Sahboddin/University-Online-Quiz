@@ -1,1 +1,1 @@
-web: gunicorn Online-Quiz-System.wsgi
+web: gunicorn online_quiz.wsgi
