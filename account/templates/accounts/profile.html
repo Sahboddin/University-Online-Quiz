@@ -1,57 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>User Profile</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f4f4f4;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
-    .profile-container {
-      background-color: white;
-      padding: 20px;
-      border-radius: 5px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      width: 300px;
-      text-align: center;
-    }
-    h2 {
-      color: #333;
-    }
-    .info {
-      margin: 15px 0;
-      text-align: left;
-    }
-    .logout-btn {
-      background-color: #f44336;
-      color: white;
-      border: none;
-      padding: 10px;
-      border-radius: 4px;
-      cursor: pointer;
-      width: 100%;
-    }
-    .logout-btn:hover {
-      background-color: #d32f2f;
-    }
-  </style>
-</head>
-<body>
-  <div class="profile-container">
+{% extends 'base.html' %}
+
+{% block title %}Available Quizzes{% endblock %}
+
+{% block content %}
     <h2>User Profile</h2>
-    <div class="info">
       <p><strong>Username:</strong> {{ user.username }}</p>
       <p><strong>Email:</strong> {{ user.email }}</p>
     </div>
     <a href="{% url 'logout' %}" class="logout-btn">Logout</a>
     <a href="{% url 'quiz_list' %}" class="logout-btn">Attempt Quiz</a>
   </div>
-</body>
-</html>
+{% endblock %}
